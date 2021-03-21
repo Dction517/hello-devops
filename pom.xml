@@ -2,10 +2,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.serverless</groupId>
-  <artifactId>hello</artifactId>
+  <artifactId>hello-devops</artifactId>
   <packaging>jar</packaging>
-  <version>dev</version>
-  <name>hello</name>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>hello-devops</name>
 
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
