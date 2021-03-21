@@ -20,9 +20,20 @@ service: hello-devops
 # Check out our docs for more details
 frameworkVersion: '2'
 
+custom:
+  packaging: jar
+  version: 0.0.1-SNAPSHOT
+  artifactName: '${self:service}-${self:custom.version}.${self:custom.packaging}'
+
 provider:
   name: aws
   runtime: java8
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'ap-southeast-1'}
+  profile: ${opt:profile, "default"}
+  apiGateway:
+    shouldStartNameWithService: true
+
 
 # you can overwrite defaults here
 #  stage: dev
@@ -50,11 +61,15 @@ provider:
 
 # you can add packaging information here
 package:
-  artifact: target/hello-dev.jar
+  artifact: 'target/${self:custom.artifactName}'
 
 functions:
   hello:
     handler: com.serverless.Handler
+    events:
+      - http:
+          path: /hello
+          method: get
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
