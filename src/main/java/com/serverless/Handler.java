@@ -16,7 +16,7 @@ public class Handler implements RequestHandler<Map<String, Object>, ApiGatewayRe
 	@Override
 	public ApiGatewayResponse handleRequest(Map<String, Object> input, Context context) {
 		LOG.info("received: {}", input);
-		Response responseBody = new Response("Hello DevOps!", input);
+		Response responseBody = new Response("Hello DevOps! Test CI/CD", input);
 		return ApiGatewayResponse.builder()
 				.setStatusCode(200)
 				.setObjectBody(responseBody)
